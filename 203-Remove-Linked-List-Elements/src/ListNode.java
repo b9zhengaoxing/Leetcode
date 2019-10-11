@@ -6,17 +6,21 @@ public class ListNode {
         val = x;
     }
 
-    //构造函数不能有返回值，Java里面this就是self
+    //构造函数不能有返回值!
+    //Java里面this就是self
+    //使用arr为参数，创建链表，以当前ListNode为头节点
     public ListNode (int[] arr) {
 
-        ListNode prev = this;
+        if (arr == null || arr.length == 0)
+            throw new IllegalArgumentException("ListNode arr failed");
+
+        this.val = arr[0];
+
+        ListNode cur = this;
         for (int i = 0; i < arr.length; i++) {
-            if (i == 0) {
-                this.val = arr[0];
-            } else {
-                prev.next = new ListNode(arr[i]);
-                prev = prev.next;
-            }
+
+            cur.next = new ListNode(arr[i]);
+            cur = cur.next;
         }
     }
 
@@ -24,13 +28,14 @@ public class ListNode {
     public String toString () {
 
         StringBuilder res = new StringBuilder();
-        ListNode head = this;
-        while (head != null) {
-            res.append(head.val);
-            if (head.next != null) {
-                res.append("->");
+        ListNode cur = this;
+        while (cur != null) {
+            res.append(cur.val);
+            res.append("->");
+            if (cur.next == null) {
+                res.append("NUll");
             }
-            head = head.next;
+            cur = cur.next;
         }
         return res.toString();
     }
