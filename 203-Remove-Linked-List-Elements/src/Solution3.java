@@ -12,21 +12,18 @@ public class Solution3 {
 
         if (head == null) {
             return head;
-        } else if (head.next == null) {
-            if (head.val == val) {
-                return null;
-            } else {
-                return head;
-            }
-        } else if (head.next != null) {
-            if (head.val == val) {
-                head = this.removeElements(head.next, val);
-            } else {
-                head.next = this.removeElements(head.next, val);
-            }
         }
 
-        return head;
+        //缩小head.next = removeElements(head.next, val);
+        //        //head 或者 head.next
+        //        head.next = removeElements(head.next, val);问题规模
+        //
+
+        if (head.val == val) {
+            return head.next;
+        } else {
+            return head;
+        }
     }
 
     public static void main (String[] args) {
