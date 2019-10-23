@@ -19,6 +19,8 @@ public class Solution3 {
         //        head.next = removeElements(head.next, val);问题规模
         //
 
+        head.next = removeElements(head.next, val);
+
         if (head.val == val) {
             return head.next;
         } else {
